@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Forever Valentine 💖</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #e31b6d;
+            --secondary-color: #ff99ac;
+            --accent-color: #fff0f3;
+            --text-color: #fff;
+            --bg-gradient: linear-gradient(135deg, #2e001f 0%, #680026 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        #particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: float 10s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 90%;
+            width: 600px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: popIn 0.6s ease;
+        }
+
+        .container.active {
+            display: flex;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-family: 'Parisienne', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .letter-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            min-height: 200px;
+        }
+
+        .cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .proposal-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        #noBtn {
+            background: #444;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="particles"></div>
+
+    <!-- Intro -->
+    <div class="container active" id="screen-intro">
+        <h1>Hey Beautiful ✨</h1>
+        <p>I have something special to show you.</p>
+        <button class="btn" onclick="nextScreen('screen-gallery')">Start Journey ❤️</button>
+    </div>
+
+    <!-- Gallery -->
+    <div class="container" id="screen-gallery">
+        <h1>Our Memories 📸</h1>
+        <p>Every moment with you is a treasure.</p>
+        <div class="gallery-grid">
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400"></div>
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400"></div>
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400"></div>
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=400"></div>
+        </div>
+        <button class="btn" onclick="nextScreen('screen-letter')">Next →</button>
+    </div>
+
+    <!-- Letter -->
+    <div class="container" id="screen-letter">
+        <h1>For You 💌</h1>
+        <div class="letter-content">
+            <span id="typewriter-text"></span><span class="cursor"></span>
+        </div>
+        <button class="btn" id="letter-next-btn" style="opacity:0;pointer-events:none;"
+            onclick="nextScreen('screen-proposal')">One Last Thing...</button>
+    </div>
+
+    <!-- Proposal -->
+    <div class="container" id="screen-proposal">
+        <h1>Will You Be My Valentine? 🌹</h1>
+        <p>You are my joy, my sunshine, my everything.</p>
+        <div class="proposal-btns">
+            <button class="btn" onclick="acceptProposal()">YES! 😍</button>
+            <button class="btn" id="noBtn" onmouseover="dodgeButton()">No 😢</button>
+        </div>
+    </div>
+
+    <!-- Celebration -->
+    <div class="container" id="screen-celebration">
+        <h1>I Knew It! 💖</h1>
+        <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"
+            style="width:100%;border-radius:10px;margin-bottom:20px;">
+        <p>I love you so much! 🥰</p>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
+
+    <script>
+        const YOUR_EMAIL = "demo@gmail.com";
+
+        const loveLetterText = "Dearest Love,\n\nFrom the day I saw you, I fell in love with you. The kind of love I had never felt before — pure and beautiful.\n\nI want to cherish every moment together and create a lifetime of sweet, unforgettable memories with you.\n\nSo, I have a very important question...";
+
+        const music = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        document.addEventListener("click", () => {
+            if (!isPlaying) {
+                music.play().then(() => isPlaying = true);
+            }
+        }, { once: true });
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+            } else {
+                music.play();
+                isPlaying = true;
+            }
+        }
+
+        function nextScreen(id) {
+            document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+
+            if (id === 'screen-letter') startTypewriter();
+        }
+
+        // Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.width = p.style.height = Math.random() * 8 + 4 + 'px';
+                p.style.animationDuration = Math.random() * 10 + 10 + 's';
+                container.appendChild(p);
+            }
+        }
+        createParticles();
+
+        // Typewriter
+        let index = 0;
+        function startTypewriter() {
+            index = 0;
+            document.getElementById("typewriter-text").innerHTML = "";
+            type();
+        }
+
+        function type() {
+            if (index < loveLetterText.length) {
+                const char = loveLetterText[index];
+                document.getElementById("typewriter-text").innerHTML += char === "\n" ? "<br>" : char;
+                index++;
+                setTimeout(type, 40);
+            } else {
+                const btn = document.getElementById("letter-next-btn");
+                btn.style.opacity = "1";
+                btn.style.pointerEvents = "auto";
+            }
+        }
+
+        // Dodge button
+        function dodgeButton() {
+            const btn = document.getElementById("noBtn");
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 60);
+            btn.style.position = "fixed";
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+
+        function acceptProposal() {
+            nextScreen("screen-celebration");
+            triggerConfetti();
+            sendNotification();
+        }
+
+        function sendNotification() {
+            if (!YOUR_EMAIL || YOUR_EMAIL.includes("demo")) return;
+
+            fetch(`https://formsubmit.co/ajax/${YOUR_EMAIL}`, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    subject: "SHE SAID YES! 💖",
+                    message: "Your Valentine accepted!",
+                })
+            });
+        }
+
+        function triggerConfetti() {
+            for (let i = 0; i < 120; i++) {
+                const c = document.createElement("div");
+                c.style.position = "fixed";
+                c.style.left = Math.random() * 100 + "vw";
+                c.style.top = "-10px";
+                c.style.width = "8px";
+                c.style.height = "8px";
+                c.style.background = `hsl(${Math.random() * 360},100%,50%)`;
+                document.body.appendChild(c);
+
+                const anim = c.animate([
+                    { transform: "translateY(0)", opacity: 1 },
+                    { transform: "translateY(100vh)", opacity: 0 }
+                ], { duration: 3000 + Math.random() * 2000 });
+
+                anim.onfinish = () => c.remove();
+            }
+        }
+    </script>
+
+</body>
+</html>
